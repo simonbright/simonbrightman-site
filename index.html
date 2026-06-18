@@ -77,10 +77,16 @@
     <!-- Hero -->
     <section class="hero-glow relative overflow-hidden border-b border-slate-200/60 pt-28 pb-20 sm:pt-36 sm:pb-28">
       <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
-        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-teal-700">
-          <span class="h-1.5 w-1.5 rounded-full bg-teal-500"></span>
-          Product · Data · AI Executive
-        </p>
+        <div class="mb-4 flex flex-wrap items-center gap-2">
+          <p class="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-teal-700">
+            <span class="h-1.5 w-1.5 rounded-full bg-teal-500"></span>
+            Product · Data · AI Executive
+          </p>
+          <p class="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-sky-800">
+            <svg class="h-3.5 w-3.5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84 51.903 51.903 0 0 0-2.658.813m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342"/></svg>
+            University of Cambridge · Master's Graduate
+          </p>
+        </div>
         <h1 class="max-w-4xl text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
           Bridging Technical Architecture with <span class="bg-gradient-to-r from-teal-600 to-indigo-600 bg-clip-text text-transparent">Commercial Execution.</span>
         </h1>
@@ -189,9 +195,33 @@
         <div class="mb-14 max-w-2xl">
           <h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Past Track Record Highlights</h2>
           <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-            Measurable outcomes across enterprise AI, data platform, and commercial transformation mandates.
+            Measurable outcomes across enterprise AI, data platform, and commercial transformation mandates — grounded in a Cambridge Master's research focus on strategic decision support systems.
           </p>
         </div>
+
+        <!-- Cambridge credential -->
+        <article class="group relative mb-8 overflow-hidden rounded-2xl border-2 border-sky-200 bg-gradient-to-r from-sky-50 via-white to-indigo-50 p-7 shadow-sm sm:p-8">
+          <div class="absolute left-0 top-0 h-full w-1.5 bg-gradient-to-b from-sky-500 to-indigo-600"></div>
+          <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+            <div class="max-w-xl">
+              <p class="text-sm font-semibold text-slate-900">University of Cambridge</p>
+              <p class="mt-1 text-xs font-medium uppercase tracking-wider text-sky-700">Master's Degree · International Relations</p>
+              <p class="mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Strategic Decision Support Systems</p>
+              <p class="mt-1 text-sm font-medium text-sky-700">Research focus · Analytics &amp; executive decision-making</p>
+            </div>
+            <div class="shrink-0 rounded-xl border border-sky-200 bg-white px-4 py-3 text-center shadow-sm">
+              <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Graduate</p>
+              <p class="mt-1 text-lg font-bold text-sky-800">Cambridge</p>
+              <p class="text-xs text-slate-500">2015 – 2018</p>
+            </div>
+          </div>
+          <ul class="mt-6 grid gap-2 text-sm leading-relaxed text-slate-600 sm:grid-cols-2">
+            <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-sky-500"></span>Thesis: <em>Identifying Opportunities to Improve Strategic Decision-Making within International Organizations</em></li>
+            <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-sky-500"></span>Applied best-in-class frameworks and technologies to reduce uncertainty in complex executive decisions</li>
+            <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-sky-500"></span>Developed practical tools for leaders to assess situations, model probable outcomes, and optimize courses of action</li>
+            <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-sky-500"></span>MBA, Technology Management — University of Ottawa (2001 – 2003)</li>
+          </ul>
+        </article>
 
         <div class="grid gap-6 sm:grid-cols-2">
           <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-stone-50 p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md hover:shadow-teal-100/60">
@@ -255,6 +285,70 @@
               <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-teal-500"></span>Delivered SaaS loyalty products for American Airlines, British Airways, Hilton, and other Tier-1 partners</li>
               <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-teal-500"></span>Facilitated product roadmaps spanning airlines, financial services, and hospitality verticals</li>
               <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-teal-500"></span>Co-invented loyalty point gift registry patent (US 20130046606) for platform IP expansion</li>
+            </ul>
+          </article>
+
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-stone-50 p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md hover:shadow-indigo-100/60">
+            <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-indigo-400 to-violet-600"></div>
+            <p class="text-sm font-semibold text-slate-900">Panvista Analytics</p>
+            <p class="mt-1 text-xs font-medium uppercase tracking-wider text-indigo-600">VP, Data &amp; Analytics · Product</p>
+            <p class="mt-5 text-3xl font-bold tracking-tight text-slate-900">300%</p>
+            <p class="mt-1 text-sm font-medium text-indigo-700">Revenue growth · B2B SaaS pivot</p>
+            <ul class="mt-4 space-y-2 text-sm leading-relaxed text-slate-600">
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-500"></span>Pivoted from commoditized mobile app development to enterprise behavioral analytics</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-500"></span>Engineered signal-to-action architecture compressing billions of IoT/mobile data points into enterprise insights</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-500"></span>Transformed a services-heavy agency into a high-margin, pure B2B SaaS platform</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-500"></span>Closed multi-million-dollar enterprise contracts with Reed, Penton, Freeman, and global trade networks</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-500"></span>Partnered with EVP of Sales to win 20+ enterprise accounts across Tier-1 publishers</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-500"></span>Scaled analytics and engineering org from 8 to 25 headcount to support hyper-growth</li>
+            </ul>
+          </article>
+
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-stone-50 p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-400 hover:shadow-md hover:shadow-slate-200/60">
+            <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-slate-500 to-slate-700"></div>
+            <p class="text-sm font-semibold text-slate-900">KPMG US</p>
+            <p class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-600">Senior Manager · IT Services &amp; Product Delivery</p>
+            <p class="mt-5 text-3xl font-bold tracking-tight text-slate-900">~15</p>
+            <p class="mt-1 text-sm font-medium text-slate-700">Direct reports · enterprise programs</p>
+            <ul class="mt-4 space-y-2 text-sm leading-relaxed text-slate-600">
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-500"></span>Steered successful launch of multiple product and service lines for global advisory IT division</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-500"></span>Managed enterprise-scale technology programs and online product delivery portfolios</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-500"></span>Served as primary interface for CIOs and Steering Committees on business-critical systems</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-500"></span>Negotiated and managed high-value vendor SLAs with Dell, HP, Microsoft, and Hitachi</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-500"></span>Led high-stakes product engagements across financial services and enterprise technology clients</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-500"></span>Built executive stakeholder management discipline foundational to later VP-level mandates</li>
+            </ul>
+          </article>
+
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-stone-50 p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md hover:shadow-violet-100/60">
+            <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-violet-400 to-purple-600"></div>
+            <p class="text-sm font-semibold text-slate-900">Resolver (Kroll Business)</p>
+            <p class="mt-1 text-xs font-medium uppercase tracking-wider text-violet-600">Senior Product &amp; Program Manager · GRC</p>
+            <p class="mt-5 text-3xl font-bold tracking-tight text-slate-900">30+</p>
+            <p class="mt-1 text-sm font-medium text-violet-700">Developers &amp; QA · full product lifecycle</p>
+            <ul class="mt-4 space-y-2 text-sm leading-relaxed text-slate-600">
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-500"></span>Conceptualized and rolled out API-based SaaS compliance products for SOX and regulatory statutes</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-500"></span>Managed end-to-end product lifecycle with direct oversight of 30+ developers and QA staff</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-500"></span>Delivered risk management and compliance platforms for banks, financial institutions, and healthcare</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-500"></span>Pioneered early API-first SaaS architecture patterns later applied at Points.com and TransUnion</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-500"></span>Bridged legal, compliance, and engineering requirements into shippable product increments</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-500"></span>Established foundation in GRC product delivery spanning FinTech and enterprise risk workflows</li>
+            </ul>
+          </article>
+
+          <article class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-stone-50 p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md hover:shadow-teal-100/60">
+            <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-emerald-400 to-teal-600"></div>
+            <p class="text-sm font-semibold text-slate-900">Nexight</p>
+            <p class="mt-1 text-xs font-medium uppercase tracking-wider text-emerald-600">Co-Founder · VP Product &amp; Data Analytics</p>
+            <p class="mt-5 text-3xl font-bold tracking-tight text-slate-900">0→1</p>
+            <p class="mt-1 text-sm font-medium text-emerald-700">Founder-built AML &amp; due diligence platform</p>
+            <ul class="mt-4 space-y-2 text-sm leading-relaxed text-slate-600">
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-emerald-500"></span>Co-founded an early AI-led firm specializing in web-based AML and due diligence solutions</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-emerald-500"></span>Led design of analytical solutions and algorithmic approaches in the early big-data environment</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-emerald-500"></span>Built data strategy and product architecture from inception — precursor to modern agentic workflows</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-emerald-500"></span>Delivered automated risk and compliance intelligence for financial services clients</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-emerald-500"></span>Established founder-level product instincts applied across 20+ years of executive leadership</li>
+              <li class="flex gap-2"><span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-emerald-500"></span>Operated in NYC metro market at intersection of data analytics, RegTech, and enterprise sales</li>
             </ul>
           </article>
         </div>
