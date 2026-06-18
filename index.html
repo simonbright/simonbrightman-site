@@ -17,11 +17,11 @@
             sans: ['Inter', 'system-ui', 'sans-serif'],
           },
           colors: {
-            charcoal: {
-              950: '#0a0a0b',
-              900: '#111113',
-              800: '#1a1a1e',
-              700: '#27272a',
+            ink: {
+              950: '#0f172a',
+              900: '#1e293b',
+              700: '#334155',
+              500: '#64748b',
             },
           },
         },
@@ -37,27 +37,34 @@
       bottom: -2px;
       left: 0;
       width: 0;
-      height: 1px;
-      background: #10b981;
+      height: 2px;
+      background: linear-gradient(90deg, #0d9488, #6366f1);
+      border-radius: 1px;
       transition: width 0.25s ease;
     }
     .nav-link:hover::after { width: 100%; }
+    .hero-glow {
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 0%, rgba(45, 212, 191, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 90% 10%, rgba(99, 102, 241, 0.14) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+    }
   </style>
 </head>
-<body class="bg-charcoal-950 text-zinc-300 antialiased selection:bg-emerald-500/30 selection:text-white">
+<body class="bg-stone-50 text-slate-600 antialiased selection:bg-teal-200 selection:text-teal-950">
 
   <!-- Fixed Navigation -->
-  <header class="fixed top-0 inset-x-0 z-50 border-b border-zinc-800/60 bg-charcoal-950/80 backdrop-blur-xl">
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl shadow-sm shadow-slate-900/5">
     <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-      <a href="#" class="text-sm font-semibold tracking-tight text-white sm:text-base">
+      <a href="#" class="text-sm font-semibold tracking-tight text-slate-900 sm:text-base">
         Simon Brightman
       </a>
-      <ul class="hidden items-center gap-8 text-sm font-medium text-zinc-400 md:flex">
-        <li><a href="#pillars" class="nav-link transition-colors hover:text-white">Core Pillars</a></li>
-        <li><a href="#venture-lab" class="nav-link transition-colors hover:text-white">Venture Lab</a></li>
-        <li><a href="#track-record" class="nav-link transition-colors hover:text-white">Track Record</a></li>
+      <ul class="hidden items-center gap-8 text-sm font-medium text-slate-500 md:flex">
+        <li><a href="#pillars" class="nav-link transition-colors hover:text-slate-900">Core Pillars</a></li>
+        <li><a href="#venture-lab" class="nav-link transition-colors hover:text-slate-900">Venture Lab</a></li>
+        <li><a href="#track-record" class="nav-link transition-colors hover:text-slate-900">Track Record</a></li>
       </ul>
-      <a href="#contact" class="rounded-md bg-emerald-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-emerald-500 sm:text-sm">
+      <a href="#contact" class="rounded-lg bg-gradient-to-r from-teal-600 to-teal-500 px-4 py-2 text-xs font-semibold text-white shadow-md shadow-teal-600/20 transition hover:from-teal-500 hover:to-teal-400 sm:text-sm">
         Contact
       </a>
     </nav>
@@ -66,19 +73,21 @@
   <main>
 
     <!-- Hero -->
-    <section class="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28">
-      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.08)_0%,_transparent_60%)]"></div>
-      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(99,102,241,0.06)_0%,_transparent_50%)]"></div>
+    <section class="hero-glow relative overflow-hidden border-b border-slate-200/60 pt-28 pb-20 sm:pt-36 sm:pb-28">
       <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
-        <p class="mb-4 text-xs font-semibold uppercase tracking-widest text-emerald-400">Product · Data · AI Executive</p>
-        <h1 class="max-w-4xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-          Bridging Technical Architecture with Commercial Execution.
+        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-teal-700">
+          <span class="h-1.5 w-1.5 rounded-full bg-teal-500"></span>
+          Product · Data · AI Executive
+        </p>
+        <h1 class="max-w-4xl text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+          Bridging Technical Architecture with <span class="bg-gradient-to-r from-teal-600 to-indigo-600 bg-clip-text text-transparent">Commercial Execution.</span>
         </h1>
-        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-zinc-400 sm:text-xl">
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 sm:text-xl">
           Senior Product, Data, and AI Executive specializing in building high-scale B2B SaaS, DaaS, and non-deterministic execution engines for federated enterprise environments.
         </p>
-        <div class="mt-10 max-w-3xl border-l-2 border-emerald-500/40 pl-6">
-          <p class="text-base leading-relaxed text-zinc-300 sm:text-lg">
+        <div class="mt-10 max-w-3xl rounded-2xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur-sm sm:p-8">
+          <div class="mb-3 h-1 w-12 rounded-full bg-gradient-to-r from-teal-500 to-indigo-500"></div>
+          <p class="text-base leading-relaxed text-slate-700 sm:text-lg">
             I am a grounded innovator and execution-oriented executive with over 20 years of experience leading cross-functional teams across FinTech, GRC, AdTech, and SalesTech domains. My focus is where advanced data plumbing meets revenue—specifically overhauling multi-agent platforms to protect operating margins, commercializing Generative AI pipelines, and transitioning traditional models into consumption-based or transactional pricing frameworks. Whether managing multi-billion-record environments at a public data corporation or building zero-to-one infrastructure, I design deterministic guardrails for complex, non-deterministic systems.
           </p>
         </div>
@@ -86,39 +95,39 @@
     </section>
 
     <!-- Strategic Trifecta -->
-    <section id="pillars" class="border-t border-zinc-800/60 bg-charcoal-900 py-20 sm:py-28">
+    <section id="pillars" class="bg-white py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8">
         <div class="mb-14 max-w-2xl">
-          <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Core Pillars of Execution</h2>
-          <p class="mt-4 text-base leading-relaxed text-zinc-400 sm:text-lg">
+          <h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Core Pillars of Execution</h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
             In data-dense ecosystems, product management cannot exist in a vacuum. True value realization requires the seamless integration of three operational disciplines:
           </p>
         </div>
         <div class="grid gap-6 md:grid-cols-3">
-          <article class="group rounded-xl border border-zinc-800 bg-charcoal-800/50 p-7 transition hover:border-emerald-500/30 hover:bg-charcoal-800">
-            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
+          <article class="group rounded-2xl border border-slate-200 bg-stone-50 p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 hover:shadow-md hover:shadow-teal-100">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 text-white shadow-md shadow-teal-500/25">
               <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
             </div>
-            <h3 class="text-lg font-semibold text-white">Product Strategy &amp; Commercialization</h3>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+            <h3 class="text-lg font-semibold text-slate-900">Product Strategy &amp; Commercialization</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">
               Aligning complex backend technical capabilities directly with go-to-market execution, driving platform unit economics, and accelerating Time-to-Value (TTV).
             </p>
           </article>
-          <article class="group rounded-xl border border-zinc-800 bg-charcoal-800/50 p-7 transition hover:border-indigo-500/30 hover:bg-charcoal-800">
-            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400">
+          <article class="group rounded-2xl border border-slate-200 bg-stone-50 p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md hover:shadow-indigo-100">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 text-white shadow-md shadow-indigo-500/25">
               <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
             </div>
-            <h3 class="text-lg font-semibold text-white">Data Platform Engineering</h3>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+            <h3 class="text-lg font-semibold text-slate-900">Data Platform Engineering</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">
               Architecting scalable data pipelines, optimizing ingestion layer performance, and implementing Model Context Protocol (MCP) data permissions to support risk and compliance workflows.
             </p>
           </article>
-          <article class="group rounded-xl border border-zinc-800 bg-charcoal-800/50 p-7 transition hover:border-emerald-500/30 hover:bg-charcoal-800">
-            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
+          <article class="group rounded-2xl border border-slate-200 bg-stone-50 p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md hover:shadow-violet-100">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-violet-600 text-white shadow-md shadow-violet-500/25">
               <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
             </div>
-            <h3 class="text-lg font-semibold text-white">Advanced Analytics &amp; Observability</h3>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+            <h3 class="text-lg font-semibold text-slate-900">Advanced Analytics &amp; Observability</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">
               Building continuous verification frameworks, trace auditing systems, and latency logging arrays to guarantee data precision and platform trust at machine speed.
             </p>
           </article>
@@ -127,44 +136,44 @@
     </section>
 
     <!-- Venture Lab -->
-    <section id="venture-lab" class="border-t border-zinc-800/60 py-20 sm:py-28">
+    <section id="venture-lab" class="border-y border-slate-200/60 bg-gradient-to-b from-teal-50/40 to-stone-50 py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8">
         <div class="mb-14 max-w-3xl">
-          <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Venture Lab &amp; Ecosystem Incubation</h2>
-          <p class="mt-4 text-base leading-relaxed text-zinc-400 sm:text-lg">
+          <h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Venture Lab &amp; Ecosystem Incubation</h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
             To remain at the absolute vanguards of architectural innovation, I actively fund, build, and advise a selective portfolio of early-stage deep-tech initiatives. These projects serve as sandboxes where I test advanced data schemas, agentic tool-use capabilities, and telematics systems before deploying them at enterprise scale.
           </p>
         </div>
         <div class="grid gap-8 lg:grid-cols-2">
-          <article class="flex flex-col rounded-xl border border-zinc-800 bg-charcoal-900/80 p-8 transition hover:border-indigo-500/30">
+          <article class="flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:border-indigo-300 hover:shadow-lg hover:shadow-indigo-100/50">
             <div class="mb-5 flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-xl font-semibold text-white">
-                  <a href="https://www.vantageai.cc/" target="_blank" rel="noopener noreferrer" class="transition hover:text-emerald-400">
+                <h3 class="text-xl font-semibold text-slate-900">
+                  <a href="https://www.vantageai.cc/" target="_blank" rel="noopener noreferrer" class="transition hover:text-indigo-600">
                     Vantage AI
-                    <span class="ml-1 inline-block text-zinc-500">↗</span>
+                    <span class="ml-1 inline-block text-slate-400">↗</span>
                   </a>
                 </h3>
-                <p class="mt-1 text-xs font-medium uppercase tracking-wider text-indigo-400">Enterprise Agentic AI Rollouts &amp; Governance Frameworks</p>
+                <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-indigo-600">Enterprise Agentic AI Rollouts &amp; Governance Frameworks</p>
               </div>
             </div>
-            <p class="flex-1 text-sm leading-relaxed text-zinc-400">
+            <p class="flex-1 text-sm leading-relaxed text-slate-600">
               Vantage AI functions as an applied innovation sandbox dedicated to stabilizing next-generation generative and agentic AI pipelines. Through this initiative, I design, test, and validate automated workflow frameworks—focusing on implementing Model Context Protocols (MCPs), ingestion-filter layers, and real-time operational circuit breakers to protect corporate platforms from non-deterministic execution risk.
             </p>
           </article>
-          <article class="flex flex-col rounded-xl border border-zinc-800 bg-charcoal-900/80 p-8 transition hover:border-emerald-500/30">
+          <article class="flex flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:border-teal-300 hover:shadow-lg hover:shadow-teal-100/50">
             <div class="mb-5 flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-xl font-semibold text-white">
-                  <a href="http://motometrics.co/" target="_blank" rel="noopener noreferrer" class="transition hover:text-emerald-400">
+                <h3 class="text-xl font-semibold text-slate-900">
+                  <a href="http://motometrics.co/" target="_blank" rel="noopener noreferrer" class="transition hover:text-teal-600">
                     MotoMetrics
-                    <span class="ml-1 inline-block text-zinc-500">↗</span>
+                    <span class="ml-1 inline-block text-slate-400">↗</span>
                   </a>
                 </h3>
-                <p class="mt-1 text-xs font-medium uppercase tracking-wider text-emerald-400">Telematics, Real-Time Data Orchestration, and IoT Analytics</p>
+                <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-teal-600">Telematics, Real-Time Data Orchestration, and IoT Analytics</p>
               </div>
             </div>
-            <p class="flex-1 text-sm leading-relaxed text-zinc-400">
+            <p class="flex-1 text-sm leading-relaxed text-slate-600">
               MotoMetrics is a zero-to-one transactional utility incubator designed to demonstrate the monetization of unstructured edge data assets. The platform uses OBD-II telemetry and predictive pipeline logic to help consumers inspect and maintain used cars, serving as a live testing ground for processing continuous, high-volume real-time data integrations under tight latency constraints.
             </p>
           </article>
@@ -173,40 +182,40 @@
     </section>
 
     <!-- Track Record -->
-    <section id="track-record" class="border-t border-zinc-800/60 bg-charcoal-900 py-20 sm:py-28">
+    <section id="track-record" class="bg-white py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8">
-        <h2 class="mb-14 text-2xl font-bold tracking-tight text-white sm:text-3xl">Past Track Record Highlights</h2>
+        <h2 class="mb-14 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Past Track Record Highlights</h2>
 
         <!-- Desktop table -->
-        <div class="hidden overflow-hidden rounded-xl border border-zinc-800 md:block">
+        <div class="hidden overflow-hidden rounded-2xl border border-slate-200 shadow-sm md:block">
           <table class="w-full text-left text-sm">
             <thead>
-              <tr class="border-b border-zinc-800 bg-charcoal-800/80">
-                <th class="px-6 py-4 font-semibold text-zinc-300">Organization</th>
-                <th class="px-6 py-4 font-semibold text-zinc-300">Initiative</th>
-                <th class="px-6 py-4 font-semibold text-zinc-300">Impact</th>
+              <tr class="border-b border-slate-200 bg-gradient-to-r from-slate-50 to-teal-50/50">
+                <th class="px-6 py-4 font-semibold text-slate-700">Organization</th>
+                <th class="px-6 py-4 font-semibold text-slate-700">Initiative</th>
+                <th class="px-6 py-4 font-semibold text-slate-700">Impact</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-zinc-800/80">
-              <tr class="transition hover:bg-charcoal-800/40">
-                <td class="px-6 py-5 font-medium text-white">Xverum</td>
-                <td class="px-6 py-5 text-zinc-400">Enterprise AI Platform Transformation</td>
-                <td class="px-6 py-5 text-zinc-400">Drove 18–24% AI model accuracy gains across automated pipelines through robust multi-agent orchestration frameworks.</td>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="transition hover:bg-teal-50/40">
+                <td class="px-6 py-5 font-semibold text-slate-900">Xverum</td>
+                <td class="px-6 py-5 text-slate-600">Enterprise AI Platform Transformation</td>
+                <td class="px-6 py-5 text-slate-600">Drove 18–24% AI model accuracy gains across automated pipelines through robust multi-agent orchestration frameworks.</td>
               </tr>
-              <tr class="transition hover:bg-charcoal-800/40">
-                <td class="px-6 py-5 font-medium text-white">Global Data Insights / Broadridge</td>
-                <td class="px-6 py-5 text-zinc-400">Core Data Delivery Re-architecture</td>
-                <td class="px-6 py-5 text-zinc-400">Compressed data product market-adoption velocity from 8 weeks down to minutes while optimizing variable transactional unit economics.</td>
+              <tr class="transition hover:bg-indigo-50/40">
+                <td class="px-6 py-5 font-semibold text-slate-900">Global Data Insights / Broadridge</td>
+                <td class="px-6 py-5 text-slate-600">Core Data Delivery Re-architecture</td>
+                <td class="px-6 py-5 text-slate-600">Compressed data product market-adoption velocity from 8 weeks down to minutes while optimizing variable transactional unit economics.</td>
               </tr>
-              <tr class="transition hover:bg-charcoal-800/40">
-                <td class="px-6 py-5 font-medium text-white">TransUnion</td>
-                <td class="px-6 py-5 text-zinc-400">Identity &amp; Fraud Risk Analytics</td>
-                <td class="px-6 py-5 text-zinc-400">Orchestrated API-first risk scoring marketplace infrastructure managing billions of critical consumer records under rigid FCRA compliance.</td>
+              <tr class="transition hover:bg-teal-50/40">
+                <td class="px-6 py-5 font-semibold text-slate-900">TransUnion</td>
+                <td class="px-6 py-5 text-slate-600">Identity &amp; Fraud Risk Analytics</td>
+                <td class="px-6 py-5 text-slate-600">Orchestrated API-first risk scoring marketplace infrastructure managing billions of critical consumer records under rigid FCRA compliance.</td>
               </tr>
-              <tr class="transition hover:bg-charcoal-800/40">
-                <td class="px-6 py-5 font-medium text-white">Points.com</td>
-                <td class="px-6 py-5 text-zinc-400">API-First Platform Modernization</td>
-                <td class="px-6 py-5 text-zinc-400">Managed a platform driving $300M+ in annual transactional network volume while slashing overall product delivery costs by 55–80%.</td>
+              <tr class="transition hover:bg-violet-50/40">
+                <td class="px-6 py-5 font-semibold text-slate-900">Points.com</td>
+                <td class="px-6 py-5 text-slate-600">API-First Platform Modernization</td>
+                <td class="px-6 py-5 text-slate-600">Managed a platform driving $300M+ in annual transactional network volume while slashing overall product delivery costs by 55–80%.</td>
               </tr>
             </tbody>
           </table>
@@ -214,51 +223,51 @@
 
         <!-- Mobile cards -->
         <div class="space-y-4 md:hidden">
-          <article class="rounded-xl border border-zinc-800 bg-charcoal-800/50 p-6">
-            <p class="font-semibold text-white">Xverum</p>
-            <p class="mt-1 text-xs font-medium uppercase tracking-wider text-emerald-400">Enterprise AI Platform Transformation</p>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-400">Drove 18–24% AI model accuracy gains across automated pipelines through robust multi-agent orchestration frameworks.</p>
+          <article class="rounded-2xl border border-slate-200 bg-stone-50 p-6 shadow-sm">
+            <p class="font-semibold text-slate-900">Xverum</p>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-teal-600">Enterprise AI Platform Transformation</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">Drove 18–24% AI model accuracy gains across automated pipelines through robust multi-agent orchestration frameworks.</p>
           </article>
-          <article class="rounded-xl border border-zinc-800 bg-charcoal-800/50 p-6">
-            <p class="font-semibold text-white">Global Data Insights / Broadridge</p>
-            <p class="mt-1 text-xs font-medium uppercase tracking-wider text-emerald-400">Core Data Delivery Re-architecture</p>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-400">Compressed data product market-adoption velocity from 8 weeks down to minutes while optimizing variable transactional unit economics.</p>
+          <article class="rounded-2xl border border-slate-200 bg-stone-50 p-6 shadow-sm">
+            <p class="font-semibold text-slate-900">Global Data Insights / Broadridge</p>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-indigo-600">Core Data Delivery Re-architecture</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">Compressed data product market-adoption velocity from 8 weeks down to minutes while optimizing variable transactional unit economics.</p>
           </article>
-          <article class="rounded-xl border border-zinc-800 bg-charcoal-800/50 p-6">
-            <p class="font-semibold text-white">TransUnion</p>
-            <p class="mt-1 text-xs font-medium uppercase tracking-wider text-emerald-400">Identity &amp; Fraud Risk Analytics</p>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-400">Orchestrated API-first risk scoring marketplace infrastructure managing billions of critical consumer records under rigid FCRA compliance.</p>
+          <article class="rounded-2xl border border-slate-200 bg-stone-50 p-6 shadow-sm">
+            <p class="font-semibold text-slate-900">TransUnion</p>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-teal-600">Identity &amp; Fraud Risk Analytics</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">Orchestrated API-first risk scoring marketplace infrastructure managing billions of critical consumer records under rigid FCRA compliance.</p>
           </article>
-          <article class="rounded-xl border border-zinc-800 bg-charcoal-800/50 p-6">
-            <p class="font-semibold text-white">Points.com</p>
-            <p class="mt-1 text-xs font-medium uppercase tracking-wider text-emerald-400">API-First Platform Modernization</p>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-400">Managed a platform driving $300M+ in annual transactional network volume while slashing overall product delivery costs by 55–80%.</p>
+          <article class="rounded-2xl border border-slate-200 bg-stone-50 p-6 shadow-sm">
+            <p class="font-semibold text-slate-900">Points.com</p>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-violet-600">API-First Platform Modernization</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">Managed a platform driving $300M+ in annual transactional network volume while slashing overall product delivery costs by 55–80%.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- Contact / Footer -->
-    <section id="contact" class="border-t border-zinc-800/60 py-20 sm:py-28">
+    <section id="contact" class="border-t border-slate-200/60 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 py-20 sm:py-28">
       <div class="mx-auto max-w-6xl px-5 sm:px-8">
         <div class="mx-auto max-w-3xl text-center">
           <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Connect</h2>
-          <p class="mt-6 text-base leading-relaxed text-zinc-400 sm:text-lg">
+          <p class="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg">
             I look for complex, operationally heavy executive leadership challenges where there is a mandate to modernize, scale data platform monetization, or safely deploy production-level AI infrastructure.
           </p>
           <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
             <a href="https://www.linkedin.com/in/simon-brightman/" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 rounded-lg border border-zinc-700 px-6 py-3 text-sm font-medium text-white transition hover:border-emerald-500/50 hover:bg-emerald-500/5">
+               class="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-slate-800/50 px-6 py-3 text-sm font-medium text-white transition hover:border-teal-400 hover:bg-slate-800">
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.126 0 2.063 2.063 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               LinkedIn
             </a>
             <a href="mailto:simon.brightman@gmail.com"
-               class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-500">
+               class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-teal-500 to-teal-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-500/30 transition hover:from-teal-400 hover:to-teal-300">
               <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L1.32 8.912a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
               simon.brightman@gmail.com
             </a>
           </div>
-          <p class="mt-8 text-sm text-zinc-500">
+          <p class="mt-8 text-sm text-slate-400">
             Available for Senior Leadership Mandates in Toronto, New York, Miami, and distributed global footprints.
           </p>
         </div>
@@ -267,8 +276,8 @@
 
   </main>
 
-  <footer class="border-t border-zinc-800/60 py-8">
-    <div class="mx-auto max-w-6xl px-5 text-center text-xs text-zinc-600 sm:px-8">
+  <footer class="border-t border-slate-800 bg-slate-900 py-8">
+    <div class="mx-auto max-w-6xl px-5 text-center text-xs text-slate-500 sm:px-8">
       &copy; 2026 Simon Brightman. All rights reserved.
     </div>
   </footer>
