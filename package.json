@@ -1,0 +1,38 @@
+{
+  "name": "simonbrightman-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/tailwind.in.css -o ./css/tailwind.css --minify",
+    "build:css:watch": "tailwindcss -i ./css/tailwind.in.css -o ./css/tailwind.css --watch",
+    "build": "npm run build:css",
+    "dev": "npm run build:css && concurrently -k -n css,netlify -c cyan,magenta \"npm run build:css:watch\" \"netlify dev\"",
+    "dev:static": "npm run build:css && npx --yes serve@14 . -l 3000 --config serve.json",
+    "verify:domain": "node scripts/verify-domain.mjs",
+    "deploy:draft": "npm run build && netlify deploy",
+    "deploy": "npm run build && netlify deploy --prod --build && npm run verify:domain",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonbright/simonbrightman-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonbright/simonbrightman-site/issues"
+  },
+  "homepage": "https://github.com/simonbright/simonbrightman-site#readme",
+  "type": "module",
+  "description": "Simon Brightman executive portfolio site",
+  "dependencies": {
+    "edge-tts-universal": "^1.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "concurrently": "^9.2.0",
+    "netlify-cli": "^23.4.3",
+    "tailwindcss": "^4.1.11"
+  }
+}

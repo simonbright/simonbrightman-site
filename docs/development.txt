@@ -1,0 +1,61 @@
+Local development
+=================
+
+Install dependencies:
+  npm install
+
+Start full local server (static site + TTS audio function):
+  npm run dev
+
+Wait for "Local dev server ready" then open the site on port 8888 in your browser.
+
+Static-only preview (no article audio):
+  npm run dev:static
+  Opens on port 3000.
+
+Build CSS after HTML changes:
+  npm run build
+
+Deploy preview (not production):
+  npm run deploy:draft
+
+Deploy production (simonbrightman.com):
+  npm run deploy
+
+Domain notes
+------------
+Primary: simonbrightman.com
+WWW redirects to apex. HTTP redirects to HTTPS.
+DNS: A record for apex to Netlify load balancer IP, CNAME www to netlify subdomain.
+
+Adding articles
+---------------
+1. Edit source markdown in insights_package/NN_slug/canonical_name.md
+2. Create or update insights/your-slug/index.html (use /images/*.png for diagrams)
+3. Update data/insights.json and insights/index.html inline JSON
+4. npm run build
+
+Insights source layout
+----------------------
+insights_package/
+  01_ghost_production_pipeline/ghost_pipeline.md
+  02_myth_functional_silo/functional_silo.md
+  03_death_2_week_sprint/agile_death.md
+  04_automating_operational_risk/operational_risk.md
+  05_value_data_compression/data_compression.md
+
+Markdown image paths (from insights_package/*): ../images/imagename.png
+
+Live site assets (deployed at /images/):
+  runaway_loop.png, governance_matrix.png, silo_breakdown.png,
+  saas_shift.png, risk_pipeline.png, finops_engine.png
+
+Regenerate stub assets:  python3 generate_assets.py
+Regenerate full infographics:  python3 build_insights.py  (outputs to insights_package/*/ subdirs)
+
+Published article routes:
+  /insights/continuous-agent-evaluation/
+  /insights/myth-functional-silo/
+  /insights/death-2-week-sprint/
+  /insights/automating-operational-risk/
+  /insights/value-data-compression/

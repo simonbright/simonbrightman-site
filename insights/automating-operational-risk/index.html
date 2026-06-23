@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Automating Operational Risk — establishing deterministic data guardrails for autonomous agents. By Simon Brightman." />
+  <meta name="author" content="Simon Brightman" />
+  <title>Automating Operational Risk | Simon Brightman</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="canonical" href="https://simonbrightman.com/insights/automating-operational-risk/" />
+  <meta property="og:title" content="Automating Operational Risk" />
+  <meta property="og:description" content="Establishing deterministic data guardrails for autonomous agents — MCPs, ingestion filters, and runtime circuit breakers." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://simonbrightman.com/insights/automating-operational-risk/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="/css/tailwind.css" rel="stylesheet" />
+  <link href="/css/site.css" rel="stylesheet" />
+  <script src="/js/site-prefs-init.js"></script>
+</head>
+<body class="bg-stone-50 text-slate-600 antialiased selection:bg-teal-200 selection:text-teal-950">
+
+  <header class="site-header fixed top-0 inset-x-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl shadow-sm shadow-slate-900/5">
+    <nav class="site-header__nav mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-3 sm:px-8 sm:py-4">
+      <a href="/" class="site-header__logo truncate text-sm font-semibold tracking-tight text-slate-900 sm:text-base">Simon Brightman</a>
+      <ul class="site-header__desktop hidden items-center gap-6 text-sm font-medium text-slate-500 md:flex lg:gap-8">
+        <li><a href="/#pillars" class="nav-link transition-colors hover:text-slate-900">Core Pillars</a></li>
+        <li><a href="/#venture-lab" class="nav-link transition-colors hover:text-slate-900">Venture Lab</a></li>
+        <li><a href="/#track-record" class="nav-link transition-colors hover:text-slate-900">Track Record</a></li>
+        <li><a href="/insights/" class="nav-link nav-link-active font-medium text-slate-900 transition-colors">Insights</a></li>
+      </ul>
+      <div class="site-header__actions flex items-center gap-1 sm:gap-2">
+        <div class="site-prefs" aria-label="Display preferences">
+          <button type="button" class="site-prefs__btn" data-action="font-size" data-size="sm" aria-pressed="false" title="Small text">A−</button>
+          <button type="button" class="site-prefs__btn" data-action="font-size" data-size="base" aria-pressed="true" title="Default text">A</button>
+          <button type="button" class="site-prefs__btn" data-action="font-size" data-size="lg" aria-pressed="false" title="Large text">A+</button>
+          <button type="button" class="site-prefs__btn" data-action="toggle-theme" aria-label="Switch theme" title="Switch theme"></button>
+        </div>
+        <a href="/#contact" class="site-header__contact site-header__contact--desktop hidden rounded-lg bg-gradient-to-r from-teal-600 to-teal-500 px-3 py-2 text-xs font-semibold text-white shadow-md shadow-teal-600/20 transition hover:from-teal-500 hover:to-teal-400 sm:inline-flex sm:px-4 sm:text-sm">Contact</a>
+        <button type="button" class="site-header__menu md:hidden" data-action="toggle-mobile-nav" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+          <svg class="site-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobile-nav" class="site-mobile-nav md:hidden" hidden>
+      <ul>
+        <li><a href="/#pillars">Core Pillars</a></li>
+        <li><a href="/#venture-lab">Venture Lab</a></li>
+        <li><a href="/#track-record">Track Record</a></li>
+        <li><a href="/insights/" class="site-mobile-nav__link--active">Insights</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-glow border-b border-slate-200/60 pt-28 pb-12 sm:pt-36 sm:pb-16">
+      <div class="mx-auto max-w-3xl px-5 sm:px-8">
+        <a href="/insights/" class="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-teal-700 transition hover:text-teal-600">
+          <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          Insights
+        </a>
+        <h1 class="mt-6 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          Automating Operational Risk
+        </h1>
+        <p class="mt-5 text-lg leading-relaxed text-slate-600 sm:text-xl">
+          Establishing Deterministic Data Guardrails for Autonomous Agents
+        </p>
+        <div class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-slate-200/80 pt-5 text-sm text-slate-500">
+          <span class="font-medium text-slate-700">Simon Brightman</span>
+          <span aria-hidden="true">·</span>
+          <time datetime="2026-06-08">June 8, 2026</time>
+          <span aria-hidden="true">·</span>
+          <span id="read-time">Calculating…</span>
+        </div>
+
+        <div id="audio-player" class="article-listen-bar">
+          <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Listen</span>
+          <button id="listen-btn" type="button" class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-teal-600 to-teal-500 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:from-teal-500 hover:to-teal-400 sm:text-sm">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Play article
+          </button>
+          <button id="pause-btn" type="button" class="hidden inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-50 sm:text-sm">Pause</button>
+          <button id="stop-btn" type="button" class="hidden inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-50 sm:text-sm">Stop</button>
+          <span id="listen-status" class="listen-status w-full text-xs text-slate-500 sm:ml-auto sm:w-auto" hidden aria-live="polite"></span>
+        </div>
+
+        <nav class="share-bar" aria-label="Share this article">
+          <span class="share-bar__label">Share</span>
+          <div class="share-bar__actions">
+            <button type="button" data-share="copy" data-label="Copy link" class="share-btn">Copy link</button>
+            <a data-share="linkedin" href="#" class="share-btn">LinkedIn</a>
+            <a data-share="x" href="#" class="share-btn">X</a>
+            <a data-share="email" href="#" class="share-btn">Email</a>
+            <button type="button" data-share="native" class="share-btn">Share…</button>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <article class="mx-auto max-w-3xl px-5 py-8 sm:px-8 sm:py-12">
+      <div id="article-prose" class="article-prose text-base">
+
+<h2>Introduction: From Bad Text to Bad Actions</h2>
+        <p>
+          In the initial wave of generative AI adoption, data governance failures were primarily narrative risks: bad data caused bad text. If an enterprise chatbot hallucinated a paragraph in an internal memo, the operational risk remained localized. A human reviewer caught the error, edited the text, and moved on.
+        </p>
+        <p>
+          In the era of autonomous agents, however, <strong>bad data causes bad actions.</strong>
+        </p>
+        <p>
+          Giving an autonomous agent tool-use capabilities without completely overhauling your underlying data governance is not workflow automation—it is the automation of systemic operational risk. When an organization grants an AI system the power to query live production databases, execute external API requests, route workflows, and modify core systems of record without a human in the loop, it has granted that system operational authority. If that agent runs on top of a fragmented, unvalidated data backbone, it will execute flawed logic at machine speed.
+        </p>
+
+        <h2>The Reality of Unchecked Execution</h2>
+        <p>
+          The danger of deploying agents without deterministic infrastructure manifests across three primary operational areas:
+        </p>
+        <ol>
+          <li><strong>Transactional Rupture:</strong> An agent processing information across stateful tables using stale legacy schemas will trigger incorrect financial transactions, directly impacting billing integrity.</li>
+          <li><strong>API Integration Failure:</strong> Agents encountering unmapped custom fields or unstructured data payloads will generate malformed arguments, breaking downstream API integrations and stalling mission-critical business systems.</li>
+          <li><strong>Silent Logic Drift:</strong> Non-deterministic operators running unchecked will execute flawed business logic across enterprise production environments long before traditional infrastructure monitoring tools ever register a database anomaly.</li>
+        </ol>
+        <p>
+          Real enterprise AI transformation is not a prompt engineering puzzle or a model selection debate. It is a strict data engineering and infrastructure governance challenge.
+        </p>
+
+        <h2>The Three Production Rules of Agentic Architecture</h2>
+        <p>
+          To stabilize an enterprise agentic deployment and insulate the platform from operational liability, engineering teams must implement three explicit data guardrails:
+        </p>
+
+        <figure class="article-figure">
+          <img
+            src="/images/agentic-data-governance-layer-light.png"
+            alt="Agentic Data Governance Layer — MCPs, ingestion-filter layers, and runtime circuit breakers protecting autonomous agent execution."
+            width="3570"
+            height="1470"
+            loading="lazy"
+          />
+          <figcaption>Agentic Data Governance Layer</figcaption>
+          <div class="article-figure-actions">
+            <a href="/images/agentic-data-governance-layer-light.png" download="agentic-data-governance-layer-light.png" class="article-figure-download">Download image</a>
+          </div>
+        </figure>
+
+        <h3>Rule 1: Implement Model Context Protocols (MCPs)</h3>
+        <p>
+          Autonomous agents must be treated with the same zero-trust security architecture as unverified third-party integrations. Implement strict Model Context Protocols to limit their data discovery layer. If an agent cannot programmatically validate the lineage, schema conformance, and access permissions of a specific corporate data asset, it must be hard-blocked from executing any downstream action against it.
+        </p>
+
+        <h3>Rule 2: Enforce Ingestion-Filter Layers</h3>
+        <p>
+          Never allow raw, unstructured, or unvalidated corporate data to drop straight into an active agent's context window. By installing automated ingestion-validation checks at the data layer, you restrict and structure the active data footprint. Minimizing noise within the context space routinely drives an immediate 18% to 24% spike in baseline execution accuracy.
+        </p>
+
+        <h3>Rule 3: Establish Runtime Circuit Breakers</h3>
+        <p>
+          Define rigid operational threshold parameters for all autonomous API and tool invocations. If an iterative multi-agent loop exceeds normal operational boundaries, hits an unmapped non-canonical data schema, or exceeds a designated session token budget, the system must trigger an immediate hard-stop. The execution state must be paused, and the session gracefully routed to a human supervisor for manual triage.
+        </p>
+
+      </div>
+
+      <nav class="share-bar share-bar--bottom" aria-label="Share this article">
+        <span class="share-bar__label">Share</span>
+        <div class="share-bar__actions">
+          <button type="button" data-share="copy" data-label="Copy link" class="share-btn">Copy link</button>
+          <a data-share="linkedin" href="#" class="share-btn">LinkedIn</a>
+          <a data-share="x" href="#" class="share-btn">X</a>
+          <a data-share="email" href="#" class="share-btn">Email</a>
+          <button type="button" data-share="native" class="share-btn">Share…</button>
+        </div>
+      </nav>
+
+      <div class="mt-10 flex items-start gap-4 border-t border-slate-200 pt-8">
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-indigo-600 text-sm font-bold text-white">SB</div>
+        <div>
+          <p class="font-semibold text-slate-900">Simon Brightman</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-600">
+            VP Product &amp; AI executive with 20+ years leading data platform, agentic systems, and commercial transformation mandates across FinTech, GRC, and enterprise SaaS. Cambridge Master's graduate.
+          </p>
+          <a href="/insights/" class="mt-3 inline-block text-sm font-medium text-teal-700 transition hover:text-teal-600">← Back to insights</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900 py-8">
+    <div class="mx-auto max-w-6xl px-5 text-center text-xs text-slate-500 sm:px-8">&copy; 2026 Simon Brightman. All rights reserved.</div>
+  </footer>
+
+  <script src="/js/site-ui.js"></script>
+  <script src="/js/share.js"></script>
+  <script src="/js/article-speech.js"></script>
+</body>
+</html>

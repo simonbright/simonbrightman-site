@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "continuous-agent-evaluation",
+    "title": "The Ghost in the Production Pipeline",
+    "subtitle": "Why AI Agents Require Continuous Behavioral Evaluation and Runtime Governance",
+    "excerpt": "As platforms shift from deterministic code to autonomous agentic behaviors, traditional APM and QA collapse. Continuous evaluation and runtime governance are the guardrails required to protect product integrity and the P&L.",
+    "date": "2026-06-24",
+    "readMinutes": 8,
+    "tags": ["Agentic AI", "Runtime Governance", "Enterprise AI"],
+    "image": "/images/agentic-governance-matrix-light.png",
+    "imageAlt": "The Agentic Governance Matrix comparing Continuous Evaluation and Runtime Governance"
+  },
+  {
+    "slug": "myth-functional-silo",
+    "title": "The Myth of the Functional Silo",
+    "subtitle": "Why Modern Tech Leadership Requires Total Convergence of Product, Data, and Analytics",
+    "excerpt": "Forcing product, data, and analytics into separate kingdoms is a structural liability. Total convergence is the commercial execution engine behind modern DaaS and decision-support platforms.",
+    "date": "2026-06-18",
+    "readMinutes": 2,
+    "tags": ["Product Strategy", "Data Engineering", "DaaS"],
+    "image": "/images/siloed-architecture-breakdown-light.png",
+    "imageAlt": "The Siloed Architecture Breakdown — product, data, and analytics fracture patterns"
+  },
+  {
+    "slug": "death-2-week-sprint",
+    "title": "The Death of the 2-Week Sprint",
+    "subtitle": "Overhauling Product Governance for Non-Deterministic Software",
+    "excerpt": "Legacy Scrum sprints break when shipping agentic AI and data platforms. Contract-driven specs, trace audits, and consumption-aligned P&L replace the feature factory.",
+    "date": "2026-06-16",
+    "readMinutes": 2,
+    "tags": ["Product Management", "Agile", "Enterprise AI"],
+    "image": "/images/saas-product-governance-shift-light.png",
+    "imageAlt": "The SaaS Product Governance Shift — old playbook vs. agentic playbook"
+  },
+  {
+    "slug": "automating-operational-risk",
+    "title": "Automating Operational Risk",
+    "subtitle": "Establishing Deterministic Data Guardrails for Autonomous Agents",
+    "excerpt": "Bad data no longer causes bad text—it causes bad actions. MCPs, ingestion-filter layers, and runtime circuit breakers are the guardrails that keep autonomous agents from automating systemic operational risk.",
+    "date": "2026-06-08",
+    "readMinutes": 2,
+    "tags": ["Agentic AI", "Data Governance", "Enterprise AI"],
+    "image": "/images/agentic-data-governance-layer-light.png",
+    "imageAlt": "Agentic Data Governance Layer — MCPs, ingestion filters, and circuit breakers"
+  },
+  {
+    "slug": "value-data-compression",
+    "title": "The Value of Data Compression",
+    "subtitle": "Signals, Actions, and the Architecture of Regulatory Defensibility",
+    "excerpt": "Data volume is a vanity metric. Enterprise value lies in compression ratio — distilling raw signals into defensible actions with full lineage, audit trails, and human-in-the-loop orchestration.",
+    "date": "2026-06-01",
+    "readMinutes": 3,
+    "tags": ["Data Strategy", "RegTech", "Enterprise AI"],
+    "image": "/images/token-finops-monetization-light.png",
+    "imageAlt": "Token FinOps Monetization Engine — compression, consumption, and defensibility"
+  }
+]
