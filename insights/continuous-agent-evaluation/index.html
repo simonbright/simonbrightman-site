@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Ghost in the Production Pipeline — why single-turn evals miss multi-turn agent failures, and what continuous behavior evaluation looks like in production." />
+  <meta name="author" content="Simon Brightman" />
+  <title>The Ghost in the Production Pipeline | Simon Brightman</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="canonical" href="https://simonbrightman.com/insights/continuous-agent-evaluation/" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="/css/site.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-stone-50 text-slate-600 antialiased selection:bg-teal-200 selection:text-teal-950">
+
+  <!-- Fixed Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl shadow-sm shadow-slate-900/5">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+      <a href="/" class="text-sm font-semibold tracking-tight text-slate-900 sm:text-base">
+        Simon Brightman
+      </a>
+      <ul class="hidden items-center gap-8 text-sm font-medium text-slate-500 md:flex">
+        <li><a href="/#pillars" class="nav-link transition-colors hover:text-slate-900">Core Pillars</a></li>
+        <li><a href="/#venture-lab" class="nav-link transition-colors hover:text-slate-900">Venture Lab</a></li>
+        <li><a href="/#track-record" class="nav-link transition-colors hover:text-slate-900">Track Record</a></li>
+        <li><a href="/insights/continuous-agent-evaluation/" class="nav-link nav-link-active font-medium text-slate-900 transition-colors">Insights</a></li>
+      </ul>
+      <a href="/#contact" class="rounded-lg bg-gradient-to-r from-teal-600 to-teal-500 px-4 py-2 text-xs font-semibold text-white shadow-md shadow-teal-600/20 transition hover:from-teal-500 hover:to-teal-400 sm:text-sm">
+        Contact
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Article header -->
+    <section class="hero-glow border-b border-slate-200/60 pt-28 pb-12 sm:pt-36 sm:pb-16">
+      <div class="mx-auto max-w-3xl px-5 sm:px-8">
+        <a href="/" class="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-teal-700 transition hover:text-teal-600">
+          <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          Insights
+        </a>
+        <h1 class="mt-6 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          The Ghost in the Production Pipeline
+        </h1>
+        <p class="mt-5 text-lg leading-relaxed text-slate-600 sm:text-xl">
+          Your agent passed every eval in staging. It is still failing in production — quietly, expensively, and at scale. The problem is not the model. It is the certification theater we built around it.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4 border-t border-slate-200/80 pt-6 text-sm text-slate-500">
+          <span class="font-medium text-slate-700">Simon Brightman</span>
+          <span aria-hidden="true">·</span>
+          <time datetime="2026-06-18">June 18, 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>12 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article body -->
+    <article class="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
+      <div class="article-prose text-base">
+
+        <p>
+          There is a failure mode hiding inside every production agent deployment. I call it <strong>the ghost</strong>: behavior that never appears in your offline eval suite, never triggers your observability alerts, and never shows up in a single-turn benchmark — but manifests the moment a real user applies pressure across multiple turns, ambiguous intent, and operational edge cases.
+        </p>
+        <p>
+          The ghost is not a hallucination in the model weights. It is a structural gap in how we certify agents for production. We borrowed the evaluation playbook from static ML — holdout sets, accuracy scores, pass/fail gates — and applied it to systems that are fundamentally procedural, stateful, and non-deterministic. The result is agents that earn green dashboards on Friday and generate refund loops by Monday.
+        </p>
+
+        <h2>The certification theater problem</h2>
+        <p>
+          Most enterprise teams I work with have an eval story that sounds responsible on paper. They have golden datasets. They run regression tests before deploy. They may even use an LLM-as-judge to score response quality. Leadership sees a number — 87% pass rate — and approves the release.
+        </p>
+        <p>
+          But that number measures a frozen moment. A single prompt, a single expected output, a single scoring rubric applied once. Production agents do not operate in frozen moments. They operate in conversations where context accumulates, user frustration escalates, tool permissions matter, and prior errors compound downstream decisions.
+        </p>
+        <blockquote>
+          A model can be wrong silently. An agent can be wrong loudly — wrong refund, wrong email, fifty dollars burned in tokens chasing its own tail.
+        </blockquote>
+        <p>
+          The ghost lives in the delta between those two failure geometries. And because your eval infrastructure was never designed to stress-test multi-turn trajectories, the ghost ships with every release that cleared a single-turn gate.
+        </p>
+
+        <h2>Where agents actually die</h2>
+        <p>
+          Static code fails at syntax boundaries. Agents fail at <strong>behavioral boundaries</strong> — the seams where policy, tone, tool selection, and recovery logic intersect. In production, these are predictable categories:
+        </p>
+        <ul>
+          <li><strong>Escalation mishandling</strong> — the agent fails to recognize when a human handoff is required, or escalates too late after trust is already lost.</li>
+          <li><strong>Boundary drift</strong> — off-topic prompts gradually pull the agent outside its authorized scope without a clean refusal.</li>
+          <li><strong>Tool-use miscalibration</strong> — calling the wrong tool, calling the right tool with wrong parameters, or looping tool calls without termination logic.</li>
+          <li><strong>Error recovery collapse</strong> — a recoverable failure in turn two poisons turns three through ten because the agent cannot reset conversational state.</li>
+          <li><strong>Compliance gaps</strong> — missing disclosures, incorrect refund policy application, or channel-inappropriate tone under adversarial user pressure.</li>
+        </ul>
+        <p>
+          None of these failure modes reliably surface in a single-turn eval row. They require adversarial, multi-turn scenario libraries that map directly to operational failure vectors — the same way pilots do not certify on one takeoff; they do check-rides.
+        </p>
+
+        <h2>Observability is not evaluation</h2>
+        <p>
+          A common misdirection: conflating distributed trace logging with behavioral certification. Tools like LangSmith and Datadog tell you <em>what happened</em> after the fact — latency spikes, token burn, tool invocation counts. They are essential for operations. They are not a substitute for knowing whether the agent <em>should have</em> behaved that way.
+        </p>
+        <p>
+          Observability is post-mortem infrastructure. Evaluation is pre-deployment and continuous certification infrastructure. When teams skip the second layer, they discover agent failures through customer complaints, chargebacks, and executive escalations — the most expensive eval signal in the stack.
+        </p>
+        <h3>What continuous evaluation actually means</h3>
+        <p>
+          Continuous agent evaluation is not running the same 200 prompts every night. It is maintaining a living library of multi-turn adversarial scenarios — escalation arcs, hostile customer recovery paths, tool-use stress cases — and running multi-model evaluation sweeps against <strong>deterministic heuristic rubrics</strong> that produce auditable performance bands.
+        </p>
+        <p>
+          This is a deliberate rejection of the expensive pattern where one LLM judges another LLM. Deterministic rubrics — keyword thresholds, structural heuristics, compliance phrase detection — are cheaper, repeatable, and debuggable. When a run fails, you get phrase highlights pointing to the exact turn where behavior diverged, not a opaque judge score with no remediation path.
+        </p>
+
+        <h2>Side-by-side diffing before you deploy</h2>
+        <p>
+          The highest-leverage moment in agent development is the prompt change or model upgrade that <em>almost</em> ships because offline spot-checks looked fine. Production teams need parallel run linking — the ability to execute the same scenario library against baseline and candidate configurations and diff operational compliance scores before merge.
+        </p>
+        <p>
+          This is the difference between "we think GPT-4.1-mini is cheaper and fine" and "GPT-4.1-mini fails escalation compliance on 14% of our support scenarios, concentrated in refund-exception flows." Without side-by-side diffing, you are A/B testing in production with real customers as the judge.
+        </p>
+
+        <h2>Scorecards stakeholders can actually read</h2>
+        <p>
+          Engineers live in traces and JSON. Executives live in risk exposure and brand liability. A functional eval platform must translate multi-turn behavioral results into human-readable scorecards — pass bands by scenario category, trend lines across model versions, and explicit compliance flags — without forcing non-engineering stakeholders to parse raw transcripts.
+        </p>
+        <p>
+          This is how agent governance matures from "the ML team says it is fine" to "Legal signed off on sales-agent disclosure compliance for this release." The ghost disappears when behavioral certification becomes a first-class gate in the release process, not a post-launch forensic exercise.
+        </p>
+
+        <h2>Build the harness before the agent</h2>
+        <p>
+          The teams that avoid the ghost share one discipline: they build evaluation infrastructure before they scale agent surface area. They treat scenario authorship as product work — domain experts, compliance reviewers, and engineers co-author failure vectors for customer support, sales qualification, internal copilots, and regulated vertical agents.
+        </p>
+        <p>
+          They name failure modes explicitly. They layer metrics: outcome correctness, trajectory quality, and operational cost. They roll out shadow → canary → full deployment. And they accept that agent eval is never done — it is continuous check-rides for systems whose behavior drifts with every model update, prompt tweak, and tool addition.
+        </p>
+        <p>
+          This is the architectural pattern behind work I have been doing through <a href="https://www.vantageai.cc/runtimeai/" target="_blank" rel="noopener noreferrer">Vantage RuntimeAI</a> — evaluation infrastructure purpose-built for production agent pipelines, not another observability dashboard or API gateway masquerading as quality assurance.
+        </p>
+
+        <hr />
+
+        <h2>The takeaway</h2>
+        <p>
+          If your agent eval is a spreadsheet of single-turn prompts and a green CI badge, you are not measuring production readiness. You are performing certification theater while the ghost waits in the pipeline.
+        </p>
+        <p>
+          The fix is not a better model. It is a better eval substrate: adversarial multi-turn scenarios, deterministic rubrics, side-by-side model diffing, and scorecards that non-engineers can act on. Build that harness before the next release — or accept that your users will evaluate the agent for you, one expensive incident at a time.
+        </p>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-14 rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-teal-50 p-8">
+        <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Related · Venture Lab</p>
+        <h2 class="mt-2 text-xl font-bold text-slate-900">Vantage RuntimeAI</h2>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600">
+          Continuous multi-turn check-rides for production AI agents. Real scenario stress-testing, deterministic heuristic rubrics, and side-by-side model diffing — built for teams whose custom eval repository has outgrown the product itself.
+        </p>
+        <a href="https://www.vantageai.cc/runtimeai/" target="_blank" rel="noopener noreferrer"
+           class="mt-5 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-teal-600 to-teal-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-teal-600/20 transition hover:from-teal-500 hover:to-teal-400">
+          Explore RuntimeAI
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <!-- Author -->
+      <div class="mt-14 flex items-start gap-4 border-t border-slate-200 pt-10">
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-indigo-600 text-sm font-bold text-white">
+          SB
+        </div>
+        <div>
+          <p class="font-semibold text-slate-900">Simon Brightman</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-600">
+            VP Product &amp; AI executive with 20+ years leading data platform, agentic systems, and commercial transformation mandates across FinTech, GRC, and enterprise SaaS. Cambridge Master's graduate. Builder of <a href="https://www.vantageai.cc/runtimeai/">Vantage RuntimeAI</a> and <a href="https://motometrics.co/">MotoMetrics</a>.
+          </p>
+          <a href="/" class="mt-3 inline-block text-sm font-medium text-teal-700 transition hover:text-teal-600">← Back to portfolio</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-900 py-8">
+    <div class="mx-auto max-w-6xl px-5 text-center text-xs text-slate-500 sm:px-8">
+      &copy; 2026 Simon Brightman. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
