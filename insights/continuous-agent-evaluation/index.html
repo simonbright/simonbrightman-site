@@ -60,19 +60,38 @@
         <p class="mt-5 text-lg leading-relaxed text-slate-600 sm:text-xl">
           Why AI Agents Require Continuous Behavioral Evaluation and Runtime Governance
         </p>
-        <div class="mt-8 flex flex-wrap items-center gap-4 border-t border-slate-200/80 pt-6 text-sm text-slate-500">
+        <div class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-slate-200/80 pt-6 text-sm text-slate-500">
           <span class="font-medium text-slate-700">Simon Brightman</span>
           <span aria-hidden="true">·</span>
           <time datetime="2026-06-18">June 18, 2026</time>
           <span aria-hidden="true">·</span>
-          <span>10 min read</span>
+          <span id="read-time">Calculating…</span>
+        </div>
+
+        <!-- Listen controls -->
+        <div id="audio-player" class="article-listen-bar mt-6 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+          <span class="mr-2 text-xs font-semibold uppercase tracking-wider text-slate-500">Listen</span>
+          <button id="listen-btn" type="button"
+            class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-teal-600 to-teal-500 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:from-teal-500 hover:to-teal-400 sm:text-sm">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Play article
+          </button>
+          <button id="pause-btn" type="button"
+            class="hidden inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-50 sm:text-sm">
+            Pause
+          </button>
+          <button id="stop-btn" type="button"
+            class="hidden inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-50 sm:text-sm">
+            Stop
+          </button>
+          <span class="text-xs text-slate-400">Powered by your browser voice synthesis</span>
         </div>
       </div>
     </section>
 
     <!-- Article body -->
     <article class="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
-      <div class="article-prose text-base">
+      <div id="article-prose" class="article-prose text-base">
 
         <h2>Introduction: The Illusion of Deterministic Control</h2>
         <p>
@@ -107,15 +126,16 @@
           To safely scale agentic systems without introducing unmetered liability to the corporate balance sheet, platform architects must build a dedicated layer focused on two distinct pillars: <strong>Continuous Evaluation</strong> and <strong>Runtime Governance</strong>.
         </p>
 
-        <pre class="diagram-block overflow-x-auto rounded-xl border border-slate-200 bg-slate-900 p-5 text-xs leading-relaxed text-slate-300 sm:text-sm"><code>┌────────────────────────────────────────────────────────────────────────┐
-│                     THE AGENTIC GOVERNANCE ENGINE                      │
-├───────────────────────────────────┬────────────────────────────────────┤
-│     1. CONTINUOUS EVALUATION      │       2. RUNTIME GOVERNANCE        │
-├───────────────────────────────────┼────────────────────────────────────┤
-│ • Baseline Capability Scoring     │ • Algorithmic Circuit Breakers     │
-│ • Side-by-Side Model Comparing    │ • Inline Validation Schema Gates   │
-│ • Adversarial Scenario Stressing  │ • Dynamic Context Window Isolation │
-└───────────────────────────────────┴────────────────────────────────────┘</code></pre>
+        <figure class="article-figure">
+          <img
+            src="/images/non-deterministic-engine-governance.png"
+            alt="Comparison diagram: The Ungoverned Pipeline versus The Operational Governance Layer, showing side-by-side structural impacts of runtime execution management including API failure, token runaway, circuit breakers, and P&amp;L stability."
+            width="1200"
+            height="675"
+            loading="lazy"
+          />
+          <figcaption>Governing the Non-Deterministic Engine — Platform Governance Matrix · Simon Marc Brightman · Strategy &amp; Execution</figcaption>
+        </figure>
 
         <h3>1. Baseline Capability Scoring via Heuristic Rubrics</h3>
         <p>
@@ -187,5 +207,6 @@
     </div>
   </footer>
 
+  <script src="/js/article-speech.js"></script>
 </body>
 </html>
