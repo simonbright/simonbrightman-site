@@ -70,8 +70,15 @@ html { font-family: 'Inter', system-ui, sans-serif; }
 }
 .article-prose a:hover { color: #0f766e; }
 .article-prose strong { color: #0f172a; font-weight: 600; }
-.article-prose hr {
-  margin: 2.5rem 0;
-  border: 0;
-  border-top: 1px solid #e2e8f0;
+.article-prose pre.diagram-block {
+  margin: 2rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  white-space: pre;
+  tab-size: 2;
+}
+.article-prose pre.diagram-block code {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  padding: 0;
 }
